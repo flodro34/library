@@ -14,4 +14,6 @@ public interface MovieService {
     void deleteMovieById (Long id);
 
     void createMovie(Movie movie);
+
+    void createAllMovies(List<Movie> movies);
 }

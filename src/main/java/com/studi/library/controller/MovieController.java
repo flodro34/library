@@ -6,12 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-@RestController // REST ( consommation et production de JSON
 /*
-* @controller -> renvoie du HTML "MVC"
-*  */
-@RequestMapping("api/movie")
+ * @controller -> renvoie du HTML "MVC"
+ *  */
+@RestController // REST ( consommation et production de JSON
+@RequestMapping(ApiRegistration.API_REST + ApiRegistration.API_MOVIE)
 public class MovieController {
 
     @Autowired
@@ -22,6 +21,10 @@ public class MovieController {
         return movieService.findAllMovie();
     }
 
+    @GetMapping("{id}")
+    Movie findMovieById(Long id){
+        return movieService.findMovieById(id);
+    }
     @PostMapping
     void createMovie(@RequestBody Movie movie){
         movieService.createMovie(movie);
@@ -30,5 +33,15 @@ public class MovieController {
     @DeleteMapping("/{id}")
     void deleteMovieById(@PathVariable("id") Long id){
         movieService.deleteMovieById(id);
+    }
+
+    @PutMapping("/{id}")
+    void updateMovieById(@RequestBody Movie newMovie, @PathVariable("id") Long id){
+        movieService.updateMovieById(newMovie,id);
+    }
+
+    @PostMapping(ApiRegistration.API_API_MOVIE_LIST)
+    void createAllMovie(@RequestBody List<Movie>movies){
+        movieService.createAllMovies(movies);
     }
 }

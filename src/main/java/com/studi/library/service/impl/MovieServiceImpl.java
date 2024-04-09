@@ -49,4 +49,9 @@ public class MovieServiceImpl implements MovieService {
     public void createMovie(Movie movie) {
         movieRepository.save(movie);
     }
+
+    @Override
+    public void createAllMovies(List<Movie> movies) {
+
+    }
 }
