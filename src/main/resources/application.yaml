@@ -3,7 +3,14 @@ spring:
     url: jdbc:mysql://localhost:3306/studi_bdd?serverTimeZone=UTC
     password: bibi
     username: root
+
   jpa:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
+    open-in-view: false
+
+
+
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
